@@ -7,15 +7,16 @@ def count_word(text):
     return len(words)
 
 def count_letters(text):
-    letter_count = {}
-    lowered_string = text.lower()
-    for letter in lowered_string:
-        if letter not in letter_count:
-            letter_count[letter] = 1
-        else:
-            letter_count[letter] += 1
+    chars = {}
 
-    return letter_count
+    for char in text:
+        lowered = char.lower()
+        if lowered not in chars:
+            chars[lowered] = 1
+        else:
+            chars[lowered] += 1
+
+    return chars
 
 
 def main():
