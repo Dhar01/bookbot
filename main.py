@@ -1,12 +1,22 @@
 def get_book_text(path):
+    """
+    reading the file as string
+    """
     with open(path) as f:
         return f.read()
 
 def count_word(text):
+    """
+    counting the number of words
+    """
     words = text.split()
     return len(words)
 
 def count_letters(text):
+    """
+    this function will count the number of individual letters,
+    and returns the result in dictionary form
+    """
     chars = {}
 
     for char in text:
@@ -28,7 +38,5 @@ def main():
     #print(text)
     print(f"{word_count} number of words found in the book")
     print(f"Letter count: {letter_count}")
-
-
 
 main()
