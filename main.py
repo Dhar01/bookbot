@@ -36,6 +36,7 @@ def sort_on(dict):
 
 def dict_to_sorted_list(num_chars_dict):
     sorted_list = []
+
     for ch in num_chars_dict:
         sorted_list.append({"char": ch, "num": num_chars_dict[ch]})
 
@@ -49,8 +50,18 @@ def main():
     text = get_book_text(book_path)
     word_count = count_word(text)
     letter_count = count_letters(text)
-    #print(text)
-    print(f"{word_count} number of words found in the book")
-    print(f"Letter count: {letter_count}")
+    letter_sorted_list = dict_to_sorted_list(letter_count)
+
+
+    print(f"--- Begin report of {book_path} ---")
+    print(f"{word_count} words found in the document")
+    print()
+
+    for item in letter_sorted_list:
+        if not item["char"].isalpha():
+            continue
+        print(f"The '{item['char']}' character was found {item['num']} times")
+
+    print("\n--- End report ---")
 
 main()
