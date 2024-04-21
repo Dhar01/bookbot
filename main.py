@@ -28,13 +28,27 @@ def count_letters(text):
 
     return chars
 
+def sort_on(dict):
+    """
+    sorting dictionary contents
+    """
+    return dict["num"]
+
+def dict_to_sorted_list(num_chars_dict):
+    sorted_list = []
+    for ch in num_chars_dict:
+        sorted_list.append({"char": ch, "num": num_chars_dict[ch]})
+
+    sorted_list.sort(reverse=True, key=sort_on)
+
+    return sorted_list
+
 
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     word_count = count_word(text)
     letter_count = count_letters(text)
-    # print(type(text))
     #print(text)
     print(f"{word_count} number of words found in the book")
     print(f"Letter count: {letter_count}")
