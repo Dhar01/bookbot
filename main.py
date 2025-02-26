@@ -1,3 +1,5 @@
+import sys
+import os.path
 from stats import (
     get_num_words,
     get_chars_dict,
@@ -9,6 +11,10 @@ def get_book_text(path):
     """
     reading the file as string
     """
+    if not os.path.isfile(path):
+        print("book doesn't exist")
+        sys.exit(1)
+
     with open(path) as f:
         return f.read()
 
@@ -26,9 +32,17 @@ def print_report(book_path, num_words, chars_sorted_list):
 
     print("============= END ===============")
 
+def get_name():
+    book = sys.argv
+
+    if len(book) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    return book[1]
 
 def main():
-    book_path = "books/frankenstein.txt"
+    book_path = get_name()
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     chars_dict = get_chars_dict(text)
